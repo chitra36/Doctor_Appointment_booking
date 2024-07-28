@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Directory</title>
+    <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: black;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .nav-links a {
+            color: white;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        .nav-actions button {
+            background-color: #6f9a37;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* CSS for the cover page and slider */
+.cover-page {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+        .doctor-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .view-all-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #6f9a37;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .category-box {
+            background-color: #fff;
+            padding: 20px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: calc(33.33% - 20px);
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease-in-out;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .category-box:hover {
+            border-color: #6f9a37;
+        }
+
+        .category-icon {
+            font-size: 32px;
+            text-align: center;
+            margin-right: 20px;
+        }
+
+        .doctor-info {
+            flex: 1;
+        }
+
+        .doctor-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .doctor-info p {
+            margin-bottom: 5px;
+        }
+
+        .appointment-button {
+            background-color: white;
+            border: 2px solid #6f9a37;
+            color: #6f9a37;
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .appointment-button:hover {
+            background-color: #6f9a37;
+            color: white;
+        }
+
+        img {
+            height: 60px;
+            width: 60px;
+        }
+
+        .ProfileImage {
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+            object-fit: cover;
+        }
+
+        /* Hide additional categories initially */
+        .category-box.hidden {
+            display: none;
+        }
+
+        /* Adjust styles for smaller screens if needed */
+        @media (max-width: 768px) {
+            .doctor-categories {
+                padding: 10px;
+            }
+
+            .category-box {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .category-box {
+                width: 100%;
+            }
+        }
+
+   /* Footer  Style */
+   .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo img {
+    height: 40px; /* Adjust height as needed */
+}
+
+.footer-links ul, .footer-social ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li, .footer-social ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.footer-links ul li a, .footer-social ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover, .footer-social ul li a:hover {
+    color: #6f9a37; /* Adjust hover color */
+}
+
+.footer-social ul li a i {
+    font-size: 20px; /* Adjust icon size */
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <!-- Logo or brand content -->
+        </div>
+        <div class="nav-links">
+            <a href="../admin/sample.html">Home</a>
+            <a href="../user/about.html">About</a>
+            <a href="../user/contact.html">Contact</a>
+            <a href="../admin/sample.html">Dashboard</a>
+        </div>
+        <div class="nav-actions">
+            <button onclick="logout()">Log Out</button>
+        </div>
+    </nav>
+
+    <section class="cover-page">
+        <!-- Cover page and slider content -->
+        <div class="slider">
+            <div class="slides">
+                <!-- Slide 1 -->
+                <div class="slide">
+                    <img src="../assets/image1.jpg" alt="Slide 1">
+                    <div class="caption">Welcome to Our Doctor Directory</div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <img src="../assets/image2.jpg" alt="Slide 2">
+                    <div class="caption">Find the Best Specialists</div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <img src="../assets/image4.jpg" alt="Slide 3">
+                    <div class="caption">Book Appointments Easily</div>
+                </div>
+            </div>
+            <!-- Navigation buttons -->
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <section class="doctor-categories">
+        <button class="view-all-button" onclick="toggleViewAll()">View All</button>
+        <!-- Category boxes will be dynamically populated here -->
+    </section>
+
+
+
+  <!-- Footer Section here-->
+
+
+  <footer class="footer">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <img src="your_logo.png" alt="Logo">
+        </div>
+        <div class="footer-links">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#doctors">Our Doctors</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <ul>
+                <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-youtube"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchDoctorData();
+        });
+    
+        async function fetchDoctorData() {
+            try {
+                const response = await fetch('fetch_doctor_data.php');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                populateDoctorCategories(data);
+            } catch (error) {
+                console.error('Error fetching doctor data:', error);
+            }
+        }
+    
+        function populateDoctorCategories(data) {
+            const doctorCategoriesContainer = document.querySelector('.doctor-categories');
+    
+            data.forEach((doctor) => {
+                const categoryBox = document.createElement('div');
+                categoryBox.className = 'category-box hidden';
+    
+                categoryBox.innerHTML = `
+                    <div class="category-icon">
+                        <img src="../assets/stethoscope.png" alt="">
+                    </div>
+                    <div class="doctor-info">
+                        <h3>${doctor.specialty}</h3>
+                        <p>${doctor.count} doctors available</p>
+                        <p>Rating: ${parseFloat(doctor.avg_rating).toFixed(1)} stars</p>
+                        <p>Timing: ${doctor.timings}</p>
+                        <button class="appointment-button" onclick="BookAppointment()">Make Appointment</button>
+                    </div>
+                    <img src="https://img.freepik.com/free-photo/portrait-doctor_144627-39388.jpg?w=360&t=st=1721030504~exp=1721031104~hmac=bd153c6d4a028e2ce996dcee15b5404f7d566f6a8e54dae2f34a4204e3ae6837" alt="ProfileImage" class="ProfileImage">
+                `;
+    
+                doctorCategoriesContainer.appendChild(categoryBox);
+            });
+    
+            // Show the first four category boxes initially
+            const initialCategories = document.querySelectorAll('.category-box');
+            initialCategories.forEach((category, index) => {
+                if (index < 4) {
+                    category.classList.remove('hidden');
+                }
+            });
+        }
+    
+        function toggleViewAll() {
+            const categories = document.querySelectorAll('.category-box');
+            const viewAllButton = document.querySelector('.view-all-button');
+    
+            categories.forEach(category => {
+                if (viewAllButton.textContent === 'View All') {
+                   
+                    category.classList.remove('hidden');
+                } else {
+                  
+                    category.classList.add('hidden');
+                }
+            });
+    
+            if (viewAllButton.textContent === 'View All') {
+                viewAllButton.textContent = 'Hide All';
+            } else {
+                viewAllButton.textContent = 'View All';
+            }
+        }
+    
+        function BookAppointment() {
+            window.location.href = 'index.html';
+        }
+    
+        function logout() {
+            window.location.href = 'login.html';
+        }
+    
+        // Slider functionality
+        let slideIndex = 0;
+        function changeSlide(direction) {
+            const slides = document.querySelector('.slides');
+            const totalSlides = slides.children.length;
+            slideIndex = (slideIndex + direction + totalSlides) % totalSlides;
+            slides.style.transform = `translateX(${-slideIndex * 100}%)`;
+        }
+    
+        setInterval(() => {
+            changeSlide(1);
+        }, 3000); // Change slide every 3 seconds
+    </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    /* Your header styles here */
+    /* emergency-navbar */
+
+    .emergency-navbar {
+            background-color: #6f9a37; /* Light green background */
+            padding: 10px;
+            color: #fff; /* White text */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .emergency-navbar p {
+            margin: 0;
+        }
+
+        .emergency-navbar a {
+            color: #fff; /* White text for links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar {
+            background-color: #fffcfc;
+            /* padding: 10px 20px; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgb(8, 8, 8);
+        }
+    
+        .logo-image {
+    height: 60px; /* Adjust the height as per your design */
+    width: 60px;  /* Adjust the width as per your design */
+    margin-left: 15px;
+   
+    
+}
+        .nav-links a {
+            color: rgb(8, 8, 8);
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        .nav-actions button {
+            background-color: #6f9a37;
+            color: white;
+            margin-right: 15px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+}
+
+main {
+    padding: 20px;
+}
+
+.about-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.about-content {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.about-image {
+    flex: 1;
+    text-align: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+footer {
+    /* Your footer styles here */
+}
+
+    </style>
+</head>
+<body>
+    <header>
+      
+          <!-- Navbar code  -->
+        <div class="emergency-navbar">
+            <p><a href="emergency.html">24 HOUR BLOOD BANK SERVICE</a></p>
+            <p>For Emergency <a href="tel:+912066096000">020 66096000</a></p>
+            <p>For Appointment <a href="tel:+919730559600">+91 97305 59600</a></p>
+        </div>
+        <nav class="navbar">
+              <!-- Logo or brand content -->
+              <img src="../assets/logo3.png" alt="Logo" class="logo-image">
+            
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="../user/about.html">About</a>
+                <a href="../user/contact.html">Contact</a>
+                <a href="../admin/dashboard.html">Dashboard</a>
+            </div>
+            <div class="nav-actions">
+                <button onclick="logout()">Log Out</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <div class="about-content">
+                <h2>About Us</h2>
+                <p>Welcome to Our Doctor Directory, where we connect you with the best specialists for your health needs. Our mission is to provide reliable and accessible healthcare services through a seamless appointment booking system.</p>
+                <p>Founded in [year], we have grown to become a trusted platform for patients seeking expert medical care across various specialties.</p>
+                <p>Our team of dedicated professionals includes experienced doctors, nurses, and administrative staff committed to ensuring your health and well-being.</p>
+                <p>Explore our website to find detailed profiles of doctors, their specialties, availability, and patient reviews. Book appointments conveniently and manage your health appointments effortlessly.</p>
+            </div>
+            <div class="about-image">
+                <img src="../assets/image5.jpg" alt="Doctor Team">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Footer code here (already provided in previous examples) -->
+    </footer>
+
+    <!-- Optional: Add JavaScript for interactive elements -->
+    <script src="scripts.js"></script>
+</body>
+</html>

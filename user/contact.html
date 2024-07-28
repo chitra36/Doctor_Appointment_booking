@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    /* Your header styles here */
+    /* emergency-navbar */
+
+    .emergency-navbar {
+            background-color: #6f9a37; /* Light green background */
+            padding: 10px;
+            color: #fff; /* White text */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .emergency-navbar p {
+            margin: 0;
+        }
+
+        .emergency-navbar a {
+            color: #fff; /* White text for links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar {
+            background-color: #fffcfc;
+            /* padding: 10px 20px; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgb(8, 8, 8);
+        }
+    
+        .logo-image {
+    height: 60px; /* Adjust the height as per your design */
+    width: 60px;  /* Adjust the width as per your design */
+    margin-left: 15px;
+   
+    
+}
+        .nav-links a {
+            color: rgb(8, 8, 8);
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        .nav-actions button {
+            background-color: #6f9a37;
+            color: white;
+            margin-right: 15px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+}
+
+main {
+    padding: 20px;
+}
+
+.contact-form {
+            background-image: url(../assets/logo3.png);
+            padding: 20px;
+            border: 1px solid #6f9a37; /* Light green border */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Box shadow */
+            max-width: 600px;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+.contact-form h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #6f9a37;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #568e29;
+}
+
+/* CSS styles for footer */
+.footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-logo img {
+            width: 150px;
+            height: 150px;
+        }
+        
+        .footer-links ul {
+            display: inline-block;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+           margin-left: 100px;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+
+        }
+        
+        .footer-links ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .footer-social ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-social ul li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        .footer-social ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .copyright {
+            text-align: center;
+            padding: 10px 0;
+            margin-left: 30%;
+            color: #ccc;
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Navbar code  -->
+        <div class="emergency-navbar">
+            <p><a href="emergency.html">24 HOUR BLOOD BANK SERVICE</a></p>
+            <p>For Emergency <a href="tel:+912066096000">020 66096000</a></p>
+            <p>For Appointment <a href="tel:+919730559600">+91 97305 59600</a></p>
+        </div>
+        <nav class="navbar">
+              <!-- Logo or brand content -->
+              <img src="../assets/logo3.png" alt="Logo" class="logo-image">
+            
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="../user/about.html">About</a>
+                <a href="../user/contact.html">Contact</a>
+                <a href="../admin/dashboard.html">Dashboard</a>
+            </div>
+            <div class="nav-actions">
+                <button onclick="logout()">Log Out</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-form">
+            <h2>Contact Us</h2>
+            <form id="contactForm" action="../php/submit_contact_form.php" method="POST">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+     <!-- Footer Section here-->
+
+
+  <footer class="footer">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <img src="../assets/logo3.png" alt="Logo">
+        </div>
+        <div class="footer-links">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#Research">Research</a></li>
+                <li><a href="#diagnostics">Diagnostics</a></li>
+                <li><a href="#specialties">Specialties</a></li>
+             
+               
+            </ul>
+            <ul>
+                  <li><a href="#contact">Contact Us</a></li>
+                  <li><a href="#appeal">Appeal</a></li>
+                  <li><a href="#super-specialties">Super Specialties</a></li>
+                  <li><a href="#patient-guides">Patient Guides</a></li>
+                  <li><a href="#academics-research">Academics and Research</a></li>
+                
+            </ul>
+        </div>
+        <div class="footer-info">
+            <p>WARDIERE Hospital & Research Center,<br>
+            27 Sadashiv Peth, Nr. Alka Talkies,<br>
+            Pune 411030, Maharashtra.</p>
+            <p>For Emergency : <a href="tel:+912066096000">020 66096000</a></p>
+            <p>For Appointment : <a href="tel:+919730559600">+91 97305 59600</a></p>
+            <p>Email: <a href="mailto:phrcjr@gmail.com">phrcjr@gmail.com</a></p>
+        </div>
+        <div class="footer-social">
+            <ul>
+                <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 WARDIERE Hospital & Research Center. All rights reserved. | Designed by Your Company Name</p>
+        </div>
+    </div>
+</footer>
+
+
+
+    <!-- Optional: Add JavaScript for form validation -->
+    <script>
+        // scripts.js
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Example: Basic client-side validation (you can enhance as needed)
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+        alert('Please fill in all fields.');
+        return;
+    }
+
+    // If validation passes, submit the form
+    this.submit();
+});
+
+    </script>
+</body>
+</html>

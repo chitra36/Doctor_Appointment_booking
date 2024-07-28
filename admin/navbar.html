@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updated Navbar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ebf0e5; /* Green background */
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .logo-image {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgb(14, 13, 13);
+            text-decoration: none;
+            margin: 0 15px;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #d4e157; /* Lighter green on hover */
+        }
+
+        .nav-links .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-links .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .nav-links .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .nav-links .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .nav-links .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .nav-actions button {
+            background-color: white;
+            color: #6f9a37;
+            border: 1px solid #6f9a37;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-actions button:hover {
+            background-color: #6f9a37;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <!-- Logo or brand content -->
+        <img src="../assets/logo3.png" alt="Logo" class="logo-image">
+
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="../user/about.html">About</a>
+            <a href="../user/contact.html">Contact</a>
+            <div class="dropdown">
+                <a href="#">Diagnostics</a>
+                <div class="dropdown-content">
+                    <a href="#">Audiology & Speech Therapy</a>
+                    <a href="#">Cardiology</a>
+                    <a href="#">Endoscopy</a>
+                    <a href="#">Pathology</a>
+                    <a href="#">Pulmonary Function Test (PFT)</a>
+                </div>
+            </div>
+            <a href="#">Academics & Research</a>
+            <a href="#">Patient Guide</a>
+            <a href="dashboard.html">Dashboard</a>
+        </div>
+        <div class="nav-actions">
+            <button onclick="logout()">Log Out</button>
+        </div>
+    </nav>
+
+    <script>
+        function logout() {
+            // Your logout function here
+            alert("Logged out!");
+        }
+    </script>
+</body>
+</html>

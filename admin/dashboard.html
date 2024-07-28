@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            /* Your header styles here */
+            background: linear-gradient(to right, #e1f5fe, #b3e5fc);
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Footer styles */
+        footer {
+            /* Your footer styles here */
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(to right, #e1f5fe, #b3e5fc);
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Navbar code here -->
+    </header>
+
+    <main>
+        <h2>Dashboard</h2>
+        <section id="tables-section">
+            <!-- Tables will be populated here by JavaScript -->
+        </section>
+    </main>
+
+    <footer>
+        <!-- Footer content here -->
+        &copy; 2024 Doctor Dashboard. All rights reserved.
+    </footer>
+
+    <script>
+        // JavaScript code remains the same as previously provided
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchDashboardData();
+        });
+
+        async function fetchDashboardData() {
+            try {
+                const response = await fetch('../php/fetch_dashboard_data.php');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                populateDashboard(data);
+            } catch (error) {
+                console.error('Error fetching dashboard data:', error);
+            }
+        }
+
+        function populateDashboard(data) {
+            const tablesSection = document.getElementById('tables-section');
+
+            for (const [tableName, rows] of Object.entries(data)) {
+                if (rows.length > 0) {
+                    const table = document.createElement('table');
+                    const thead = document.createElement('thead');
+                    const tbody = document.createElement('tbody');
+
+                    // Create table headers
+                    const headers = Object.keys(rows[0]);
+                    const headerRow = document.createElement('tr');
+                    headers.forEach(header => {
+                        const th = document.createElement('th');
+                        th.textContent = header;
+                        headerRow.appendChild(th);
+                    });
+                    thead.appendChild(headerRow);
+
+                    // Create table rows
+                    rows.forEach(row => {
+                        const tr = document.createElement('tr');
+                        for (const cell of Object.values(row)) {
+                            const td = document.createElement('td');
+                            td.textContent = cell;
+                            tr.appendChild(td);
+                        }
+                        tbody.appendChild(tr);
+                    });
+
+                    table.appendChild(thead);
+                    table.appendChild(tbody);
+
+                    // Create table title
+                    const tableTitle = document.createElement('h3');
+                    tableTitle.textContent = tableName.replace('_', ' ').toUpperCase();
+
+                    tablesSection.appendChild(tableTitle);
+                    tablesSection.appendChild(table);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
