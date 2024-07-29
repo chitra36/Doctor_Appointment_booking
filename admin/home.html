@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Directory</title>
+    <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+
+         /* emergency-navbar */
+
+         .emergency-navbar {
+            background-color: #6f9a37; /* Light green background */
+            padding: 10px;
+            color: #fff; /* White text */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .emergency-navbar p {
+            margin: 0;
+        }
+
+        .emergency-navbar a {
+            color: #fff; /* White text for links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ebf0e5; /* Green background */
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+    
+        .logo-image {
+    height: 60px; /* Adjust the height as per your design */
+    width: 60px;  /* Adjust the width as per your design */
+    margin-left: 15px;
+   
+    
+}
+
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgb(14, 13, 13);
+            text-decoration: none;
+            margin: 0 15px;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #576ce1; /* Lighter green on hover */
+        }
+
+        .nav-links .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-links .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .nav-links .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .nav-links .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .nav-links .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .nav-actions button {
+            background-color: white;
+            color: #6f9a37;
+            border: 1px solid #6f9a37;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-actions button:hover {
+            background-color: #6f9a37;
+            color: white;
+        }
+
+        /* CSS for the cover page and slider */
+.cover-page {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+        .doctor-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .view-all-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #6f9a37;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .category-box {
+            background-color: #fff;
+            padding: 20px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: calc(33.33% - 20px);
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease-in-out;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .category-box:hover {
+            border-color: #6f9a37;
+        }
+
+        .category-icon {
+            font-size: 32px;
+            text-align: center;
+            margin-right: 20px;
+        }
+
+        .doctor-info {
+            flex: 1;
+        }
+
+        .doctor-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .doctor-info p {
+            margin-bottom: 5px;
+        }
+
+        .appointment-button {
+            background-color: white;
+            border: 2px solid #6f9a37;
+            color: #6f9a37;
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .appointment-button:hover {
+            background-color: #6f9a37;
+            color: white;
+        }
+
+        img {
+            height: 60px;
+            width: 60px;
+        }
+
+        .ProfileImage {
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+            object-fit: cover;
+        }
+
+        /* Hide additional categories initially */
+        .category-box.hidden {
+            display: none;
+        }
+
+        /* Adjust styles for smaller screens if needed */
+        @media (max-width: 768px) {
+            .doctor-categories {
+                padding: 10px;
+            }
+
+            .category-box {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .category-box {
+                width: 100%;
+            }
+        }
+
+    /* CSS styles for footer */
+    .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-logo img {
+            width: 150px;
+            height: 150px;
+        }
+        
+        .footer-links ul {
+            display: inline-block;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+           margin-left: 100px;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+
+        }
+        
+        .footer-links ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .footer-social ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-social ul li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        .footer-social ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .copyright {
+            text-align: center;
+            padding: 10px 0;
+            margin-left: 30%;
+            color: #ccc;
+            font-size: 12px;
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="emergency-navbar">
+        <p><a href="emergency.html">24 HOUR BLOOD BANK SERVICE</a></p>
+        <p>For Emergency <a href="tel:+912066096000">020 66096000</a></p>
+        <p>For Appointment <a href="tel:+919730559600">+91 97305 59600</a></p>
+    </div>
+    <nav class="navbar">
+        <!-- Logo or brand content -->
+        <img src="/assets/logo3.png" alt="Logo" class="logo-image">
+
+        <div class="nav-links">
+            <a href="/home.html">Home</a>
+            <a href="/user/about.html">About</a>
+            <a href="/user/contact.html">Contact</a>
+            <div class="dropdown">
+                <a href="#">Diagnostics</a>
+                <div class="dropdown-content">
+                    <a href="#">Audiology & Speech Therapy</a>
+                    <a href="#">Cardiology</a>
+                    <a href="#">Endoscopy</a>
+                    <a href="#">Pathology</a>
+                    <a href="#">Pulmonary Function Test (PFT)</a>
+                </div>
+            </div>
+            <a href="#">Academics & Research</a>
+            <a href="#">Patient Guide</a>
+            <a href="dashboard.html">Dashboard</a>
+        </div>
+        <div class="nav-actions">
+            <button onclick="logout()">Log Out</button>
+        </div>
+    </nav>
+
+    <section class="cover-page">
+        <!-- Cover page and slider content -->
+        <div class="slider">
+            <div class="slides">
+                <!-- Slide 1 -->
+                <div class="slide">
+                    <img src="/assets/image1.png" alt="Slide 1">
+                    <div class="caption">Welcome to Our Doctor Directory</div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <img src="/assets/image2.png" alt="Slide 2">
+                    <div class="caption">Find the Best Specialists</div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <img src="/assets/image3.png" alt="Slide 3">
+                    <div class="caption">Book Appointments Easily</div>
+                </div>
+                 <!-- Slide 4 -->
+                 <div class="slide">
+                    <img src="/assets/image4.png" alt="Slide 3">
+                    <div class="caption">Book Appointments Easily</div>
+                </div>
+                 <!-- Slide 5 -->
+                 <div class="slide">
+                    <img src="/assets/image5.png" alt="Slide 3">
+                    <div class="caption">Book Appointments Easily</div>
+                </div>
+                <!-- Slide 6 -->
+                <div class="slide">
+                    <img src="/assets/image5.png" alt="Slide 3">
+                    <div class="caption">Book Appointments Easily</div>
+                </div>
+            </div>
+            <!-- Navigation buttons -->
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <section class="doctor-categories">
+        <button class="view-all-button" onclick="toggleViewAll()">View All</button>
+        <!-- Category boxes will be dynamically populated here -->
+    </section>
+
+
+
+  <!-- Footer Section here-->
+
+
+  <footer class="footer">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <img src="/assets/logo3.png" alt="Logo">
+        </div>
+        <div class="footer-links">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#Research">Research</a></li>
+                <li><a href="#diagnostics">Diagnostics</a></li>
+                <li><a href="#specialties">Specialties</a></li>
+             
+               
+            </ul>
+            <ul>
+                  <li><a href="#contact">Contact Us</a></li>
+                  <li><a href="#appeal">Appeal</a></li>
+                  <li><a href="#super-specialties">Super Specialties</a></li>
+                  <li><a href="#patient-guides">Patient Guides</a></li>
+                  <li><a href="#academics-research">Academics and Research</a></li>
+                
+            </ul>
+        </div>
+        <div class="footer-info">
+            <p>WARDIERE Hospital & Research Center,<br>
+            27 Sadashiv Peth, Nr. Alka Talkies,<br>
+            Pune 411030, Maharashtra.</p>
+            <p>For Emergency : <a href="tel:+912066096000">020 66096000</a></p>
+            <p>For Appointment : <a href="tel:+919730559600">+91 97305 59600</a></p>
+            <p>Email: <a href="mailto:phrcjr@gmail.com">phrcjr@gmail.com</a></p>
+        </div>
+        <div class="footer-social">
+            <ul>
+                <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 WARDIERE Hospital & Research Center. All rights reserved. | Designed by Your Company Name</p>
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchDoctorData();
+        });
+    
+        async function fetchDoctorData() {
+            try {
+                const response = await fetch('/php/fetch_doctor_data.php');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                populateDoctorCategories(data);
+            } catch (error) {
+                console.error('Error fetching doctor data:', error);
+            }
+        }
+    
+        function populateDoctorCategories(data) {
+            const doctorCategoriesContainer = document.querySelector('.doctor-categories');
+    
+            data.forEach((doctor) => {
+                const categoryBox = document.createElement('div');
+                categoryBox.className = 'category-box hidden';
+    
+                categoryBox.innerHTML = `
+                    <div class="category-icon">
+                        <img src="/assets/stethoscope.png" alt="">
+                    </div>
+                    <div class="doctor-info">
+                        <h3>${doctor.specialty}</h3>
+                        <p>${doctor.count} doctors available</p>
+                        <p>Rating: ${parseFloat(doctor.avg_rating).toFixed(1)} stars</p>
+                        <p>Timing: ${doctor.timings}</p>
+                        <button class="appointment-button" onclick="BookAppointment()">Make Appointment</button>
+                    </div>
+                    <img src="https://img.freepik.com/free-photo/portrait-doctor_144627-39388.jpg?w=360&t=st=1721030504~exp=1721031104~hmac=bd153c6d4a028e2ce996dcee15b5404f7d566f6a8e54dae2f34a4204e3ae6837" alt="ProfileImage" class="ProfileImage">
+                `;
+    
+                doctorCategoriesContainer.appendChild(categoryBox);
+            });
+    
+            // Show the first four category boxes initially
+            const initialCategories = document.querySelectorAll('.category-box');
+            initialCategories.forEach((category, index) => {
+                if (index < 4) {
+                    category.classList.remove('hidden');
+                }
+            });
+        }
+    
+        function toggleViewAll() {
+            const categories = document.querySelectorAll('.category-box');
+            const viewAllButton = document.querySelector('.view-all-button');
+    
+            categories.forEach(category => {
+                if (viewAllButton.textContent === 'View All') {
+                   
+                    category.classList.remove('hidden');
+                } else {
+                  
+                    category.classList.add('hidden');
+                }
+            });
+    
+            if (viewAllButton.textContent === 'View All') {
+                viewAllButton.textContent = 'Hide All';
+            } else {
+                viewAllButton.textContent = 'View All';
+            }
+        }
+    
+        function BookAppointment() {
+            window.location.href = 'Booking.html';
+        }
+    
+        function logout() {
+            window.location.href = 'login.html';
+        }
+    
+        // Slider functionality
+        let slideIndex = 0;
+        function changeSlide(direction) {
+            const slides = document.querySelector('.slides');
+            const totalSlides = slides.children.length;
+            slideIndex = (slideIndex + direction + totalSlides) % totalSlides;
+            slides.style.transform = `translateX(${-slideIndex * 100}%)`;
+        }
+    
+        setInterval(() => {
+            changeSlide(1);
+        }, 3000); // Change slide every 3 seconds
+    </script>
+</body>
+</html>
