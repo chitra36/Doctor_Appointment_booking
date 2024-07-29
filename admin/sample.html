@@ -259,6 +259,7 @@
     <nav class="navbar">
         <div class="nav-logo">
             <!-- Logo or brand content -->
+            <img src="../assets/logo3.png" alt="Logo" class="logo-image">
         </div>
         <div class="nav-links">
             <a href="../admin/sample.html">Home</a>
@@ -277,17 +278,17 @@
             <div class="slides">
                 <!-- Slide 1 -->
                 <div class="slide">
-                    <img src="../assets/image1.jpg" alt="Slide 1">
+                    <img src="../assets/image1.png" alt="Slide 1">
                     <div class="caption">Welcome to Our Doctor Directory</div>
                 </div>
                 <!-- Slide 2 -->
                 <div class="slide">
-                    <img src="../assets/image2.jpg" alt="Slide 2">
+                    <img src="../assets/image2.png" alt="Slide 2">
                     <div class="caption">Find the Best Specialists</div>
                 </div>
                 <!-- Slide 3 -->
                 <div class="slide">
-                    <img src="../assets/image4.jpg" alt="Slide 3">
+                    <img src="../assets/image4.png" alt="Slide 3">
                     <div class="caption">Book Appointments Easily</div>
                 </div>
             </div>
@@ -310,11 +311,11 @@
   <footer class="footer">
     <div class="footer-content">
         <div class="footer-logo">
-            <img src="your_logo.png" alt="Logo">
+            <img src="../assets/logo3.png" alt="Logo">
         </div>
         <div class="footer-links">
             <ul>
-                <li><a href="/index.html">Home</a></li>
+                <li><a href="../admin/home.html">Home</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#doctors">Our Doctors</a></li>
@@ -366,7 +367,7 @@
     
                 categoryBox.innerHTML = `
                     <div class="category-icon">
-                        <img src="/assets/stethoscope.png" alt="">
+                        <img src="../assets/stethoscope.png" alt="">
                     </div>
                     <div class="doctor-info">
                         <h3>${doctor.specialty}</h3>
@@ -412,11 +413,11 @@
         }
     
         function BookAppointment() {
-            window.location.href = 'index.html';
+            window.location.href = '../admin/Booking.html';
         }
     
         function logout() {
-            window.location.href = 'login.html';
+            window.location.href = '../admin/login.html';
         }
     
         // Slider functionality

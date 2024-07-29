@@ -84,7 +84,7 @@
 
         async function fetchDashboardData() {
             try {
-                const response = await fetch('/php/fetch_dashboard_data.php');
+                const response = await fetch('../php/fetch_dashboard_data.php');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

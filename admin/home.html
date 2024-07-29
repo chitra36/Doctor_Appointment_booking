@@ -356,18 +356,18 @@
 </head>
 <body>
     <div class="emergency-navbar">
-        <p><a href="emergency.html">24 HOUR BLOOD BANK SERVICE</a></p>
+        <p><a href="../admin/emergency.html">24 HOUR BLOOD BANK SERVICE</a></p>
         <p>For Emergency <a href="tel:+912066096000">020 66096000</a></p>
         <p>For Appointment <a href="tel:+919730559600">+91 97305 59600</a></p>
     </div>
     <nav class="navbar">
         <!-- Logo or brand content -->
-        <img src="/assets/logo3.png" alt="Logo" class="logo-image">
+        <img src="../assets/logo3.png" alt="Logo" class="logo-image">
 
         <div class="nav-links">
-            <a href="/home.html">Home</a>
-            <a href="/user/about.html">About</a>
-            <a href="/user/contact.html">Contact</a>
+            <a href="../admin/home.html">Home</a>
+            <a href="../user/about.html">About</a>
+            <a href="../user/contact.html">Contact</a>
             <div class="dropdown">
                 <a href="#">Diagnostics</a>
                 <div class="dropdown-content">
@@ -380,7 +380,7 @@
             </div>
             <a href="#">Academics & Research</a>
             <a href="#">Patient Guide</a>
-            <a href="dashboard.html">Dashboard</a>
+            <a href="../admin/dashboard.html">Dashboard</a>
         </div>
         <div class="nav-actions">
             <button onclick="logout()">Log Out</button>
@@ -393,32 +393,32 @@
             <div class="slides">
                 <!-- Slide 1 -->
                 <div class="slide">
-                    <img src="/assets/image1.png" alt="Slide 1">
+                    <img src="../assets/image1.png" alt="Slide 1">
                     <div class="caption">Welcome to Our Doctor Directory</div>
                 </div>
                 <!-- Slide 2 -->
                 <div class="slide">
-                    <img src="/assets/image2.png" alt="Slide 2">
+                    <img src="../assets/image2.png" alt="Slide 2">
                     <div class="caption">Find the Best Specialists</div>
                 </div>
                 <!-- Slide 3 -->
                 <div class="slide">
-                    <img src="/assets/image3.png" alt="Slide 3">
+                    <img src="../assets/image3.png" alt="Slide 3">
                     <div class="caption">Book Appointments Easily</div>
                 </div>
                  <!-- Slide 4 -->
                  <div class="slide">
-                    <img src="/assets/image4.png" alt="Slide 3">
+                    <img src="../assets/image4.png" alt="Slide 3">
                     <div class="caption">Book Appointments Easily</div>
                 </div>
                  <!-- Slide 5 -->
                  <div class="slide">
-                    <img src="/assets/image5.png" alt="Slide 3">
+                    <img src="../assets/image5.png" alt="Slide 3">
                     <div class="caption">Book Appointments Easily</div>
                 </div>
                 <!-- Slide 6 -->
                 <div class="slide">
-                    <img src="/assets/image5.png" alt="Slide 3">
+                    <img src="../assets/image5.png" alt="Slide 3">
                     <div class="caption">Book Appointments Easily</div>
                 </div>
             </div>
@@ -441,7 +441,7 @@
   <footer class="footer">
     <div class="footer-content">
         <div class="footer-logo">
-            <img src="/assets/logo3.png" alt="Logo">
+            <img src="../assets/logo3.png" alt="Logo">
         </div>
         <div class="footer-links">
             <ul>
@@ -496,7 +496,7 @@
     
         async function fetchDoctorData() {
             try {
-                const response = await fetch('/php/fetch_doctor_data.php');
+                const response = await fetch('../php/fetch_doctor_data.php');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -516,7 +516,7 @@
     
                 categoryBox.innerHTML = `
                     <div class="category-icon">
-                        <img src="/assets/stethoscope.png" alt="">
+                        <img src="../assets/stethoscope.png" alt="">
                     </div>
                     <div class="doctor-info">
                         <h3>${doctor.specialty}</h3>
@@ -562,11 +562,11 @@
         }
     
         function BookAppointment() {
-            window.location.href = 'Booking.html';
+            window.location.href = '../admin/Booking.html';
         }
     
         function logout() {
-            window.location.href = 'login.html';
+            window.location.href = '../admin/login.html';
         }
     
         // Slider functionality
