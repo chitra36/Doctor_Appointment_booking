@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $row['password'])) {
             $_SESSION['username'] = $username;
             // Redirect to booking appointment page
-            header("Location: index.html");
+            header("Location: ../admin/home.html");
             exit;
         } else {
             echo "Invalid password!";
